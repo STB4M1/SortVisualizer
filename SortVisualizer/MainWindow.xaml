@@ -52,58 +52,58 @@
                     Margin="0,0,14,0">
                 <StackPanel>
                     <TextBlock Text="Control"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               Margin="0,0,0,16"/>
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Margin="0,0,0,16"/>
 
                     <TextBlock Text="Algorithm"
-                               FontWeight="SemiBold"
-                               Margin="0,0,0,6"/>
+                                FontWeight="SemiBold"
+                                Margin="0,0,0,6"/>
 
                     <ComboBox ItemsSource="{Binding Algorithms}"
-                              SelectedItem="{Binding SelectedAlgorithm}"
-                              Height="34"
-                              Margin="0,0,0,16"/>
+                                SelectedItem="{Binding SelectedAlgorithm}"
+                                Height="34"
+                                Margin="0,0,0,16"/>
 
-                    <TextBlock Text="Array Size"
-                               FontWeight="SemiBold"
-                               Margin="0,0,0,6"/>
+                    <TextBlock Text="Array size"
+                                FontWeight="SemiBold"
+                                Margin="0,0,0,6"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
                         <Slider Minimum="5"
                                 Maximum="100"
                                 Value="{Binding ArraySize}"
-                                Width="150"
+                                Width="130"
                                 TickFrequency="5"
                                 IsSnapToTickEnabled="True"/>
                         <TextBlock Text="{Binding ArraySize}"
-                                   Width="40"
-                                   TextAlignment="Right"
-                                   VerticalAlignment="Center"/>
+                                    Width="30"
+                                    TextAlignment="Right"
+                                    VerticalAlignment="Center"/>
                     </StackPanel>
 
-                    <TextBlock Text="Speed"
-                               FontWeight="SemiBold"
-                               Margin="0,0,0,6"/>
+                    <TextBlock Text="Speed weight"
+                                FontWeight="SemiBold"
+                                Margin="0,0,0,6"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
                         <Slider Minimum="10"
                                 Maximum="500"
                                 Value="{Binding SpeedMs}"
-                                Width="150"/>
+                                Width="130"/>
                         <TextBlock Text="{Binding SpeedMs}"
-                                   Width="40"
-                                   TextAlignment="Right"
-                                   VerticalAlignment="Center"/>
+                                    Width="30"
+                                    TextAlignment="Right"
+                                    VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <Button Content="Shuffle"
-                            Height="36"
+                            Height="35"
                             Margin="0,0,0,8"
                             Click="ShuffleButton_Click"/>
 
                     <Button Content="Start"
-                            Height="36"
+                            Height="35"
                             Margin="0,0,0,8"
                             Background="#2563EB"
                             Foreground="White"
@@ -111,90 +111,119 @@
                             Click="StartButton_Click"/>
 
                     <Button Content="Pause"
-                            Height="36"
+                            Height="35"
                             Margin="0,0,0,8"
                             Click="PauseButton_Click"/>
 
                     <Button Content="Step"
-                            Height="36"
+                            Height="35"
                             Margin="0,0,0,8"
                             Click="StepButton_Click"/>
 
                     <Button Content="Reset"
-                            Height="36"
+                            Height="35"
                             Click="ResetButton_Click"/>
 
-                    <Separator Margin="0,20,0,12"/>
-
-                    <TextBlock Text="Legend"
-                               FontSize="16"
-                               FontWeight="Bold"
-                               Margin="0,0,0,10"/>
-
-                    <StackPanel>
-                        <TextBlock Text="⬤ 通常: グレー" Foreground="Gray"/>
-                        <TextBlock Text="⬤ 比較中: オレンジ" Foreground="Orange"/>
-                        <TextBlock Text="⬤ 交換中: 青" Foreground="DodgerBlue"/>
-                        <TextBlock Text="⬤ Pivot: 紫" Foreground="MediumPurple"/>
-                        <TextBlock Text="⬤ 確定済み: 緑" Foreground="MediumSeaGreen"/>
-                    </StackPanel>
+                    <Button Content="Benchmark"
+                            Height="35"
+                            Margin="0,8,0,0"
+                            Background="#111827"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            Click="BenchmarkButton_Click"/>
                 </StackPanel>
             </Border>
 
             <!-- Visualization -->
             <Border Grid.Column="1"
-                    Background="White"
-                    CornerRadius="12"
-                    Padding="18"
-                    Margin="0,0,14,0">
+        Background="White"
+        CornerRadius="12"
+        Padding="18"
+        Margin="0,0,14,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0"
-                               Text="Array Visualization"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               Margin="0,0,0,14"/>
+                   Text="Array Visualization"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Margin="0,0,0,14"/>
 
+                    <!-- Bar Chart Area -->
                     <Border Grid.Row="1"
-                            BorderBrush="#E5E7EB"
-                            BorderThickness="1"
-                            CornerRadius="8"
-                            Background="#FAFAFA"
-                            Padding="8">
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="8"
+                Background="#FAFAFA"
+                Padding="8"
+                Margin="0,0,0,12">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                                      VerticalScrollBarVisibility="Disabled">
+                          VerticalScrollBarVisibility="Disabled">
                             <ItemsControl ItemsSource="{Binding Bars}"
-                                          VerticalAlignment="Bottom">
+                              VerticalAlignment="Bottom">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal"
-                                                    VerticalAlignment="Bottom"/>
+                                        VerticalAlignment="Bottom"/>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
 
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid Height="310"
-                                              Width="{Binding BarWidth}"
-                                              Margin="1,0"
-                                              VerticalAlignment="Bottom">
+                                        <Grid Height="270"
+                                  Width="{Binding BarWidth}"
+                                  Margin="1,0"
+                                  VerticalAlignment="Bottom">
                                             <Border Height="{Binding DisplayHeight}"
-                                                    Background="{Binding Fill}"
-                                                    CornerRadius="3,3,0,0"
-                                                    VerticalAlignment="Bottom"/>
+                                        Background="{Binding Fill}"
+                                        CornerRadius="3,3,0,0"
+                                        VerticalAlignment="Bottom"/>
                                         </Grid>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </ScrollViewer>
                     </Border>
+
+                    <!-- Legend -->
+                    <Border Grid.Row="2"
+                Background="#F9FAFB"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="10">
+                        <WrapPanel VerticalAlignment="Center">
+                            <TextBlock Text="Legend"
+                           FontWeight="Bold"
+                           Margin="0,0,16,0"/>
+
+                            <TextBlock Text="⬤ 通常"
+                           Foreground="Gray"
+                           Margin="0,0,16,0"/>
+
+                            <TextBlock Text="⬤ 比較中"
+                           Foreground="Orange"
+                           Margin="0,0,16,0"/>
+
+                            <TextBlock Text="⬤ 交換中"
+                           Foreground="DodgerBlue"
+                           Margin="0,0,16,0"/>
+
+                            <TextBlock Text="⬤ Pivot"
+                           Foreground="MediumPurple"
+                           Margin="0,0,16,0"/>
+
+                            <TextBlock Text="⬤ 確定済み"
+                           Foreground="MediumSeaGreen"/>
+                        </WrapPanel>
+                    </Border>
                 </Grid>
             </Border>
-
+            
             <!-- Code Panel -->
             <Border Grid.Column="2"
                     Background="White"

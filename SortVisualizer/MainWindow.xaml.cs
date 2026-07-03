@@ -106,6 +106,16 @@ namespace SortVisualizer
             _viewModel.GenerateRandomArray();
         }
 
+        private void BenchmarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            BenchmarkWindow window = new BenchmarkWindow
+            {
+                Owner = this
+            };
+
+            window.ShowDialog();
+        }
+
         private void StopRunning()
         {
             if (_cancellationTokenSource is not null)
