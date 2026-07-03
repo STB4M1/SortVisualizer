@@ -245,7 +245,7 @@ SortVisualizer/
 
 ## 📝 ライセンス
 
-未設定
+MIT Lisence
 
 ---
 
